@@ -1,0 +1,15 @@
+version: '3'
+services:
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    container_name: mysql-dbal-php
+    volumes:
+      - ./repos/mysql-dbal:/app
+  db:
+    image: "mysql/mysql-server:5.7"
+    container_name: mysql-dbal-db
+    env_file: docker/mysql/mysql.env
+    volumes:
+      - ./repos/mysql-dbal:/app
